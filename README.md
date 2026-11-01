@@ -46,6 +46,9 @@ Use `hugo --gc --minify` to produce the production site in `public/`.
 ## Theme updates
 
 Dependabot opens weekly update pull requests for the theme and GitHub Actions.
+All dependency updates are grouped per ecosystem: GitHub Actions and Go modules.
+Security updates are also grouped per ecosystem, separately from regular
+version updates as required by Dependabot.
 Review the theme's supported Hugo versions before merging an update; update the
 Hugo version in the workflow and these instructions together when necessary.
 Hugo, actionlint, and Gitleaks binaries are downloaded over HTTPS and checked
@@ -65,8 +68,11 @@ In the repository settings, set **Pages → Build and deployment → Source** to
 **GitHub Actions**. Keep the `github-pages` environment restricted to `main`.
 
 Changes should go through a pull request, not a direct push to `main`. All Actions
-are pinned to full commit SHAs; checkout does not retain Git credentials, and
-Pages/OIDC write permissions are limited to the deployment job.
+are pinned to full commit SHAs, including nested Actions used by the Pages
+artifact uploader. Check those nested references when reviewing Action updates:
+pinning a composite Action does not pin its dependencies. Checkout does not
+retain Git credentials, and Pages/OIDC write permissions are limited to the
+deployment job.
 The required build also lints the workflow, checks dependency integrity, and
 scans reachable Git history for secrets with redacted Gitleaks output.
 
