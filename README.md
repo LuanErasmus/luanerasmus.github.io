@@ -48,6 +48,10 @@ Use `hugo --gc --minify` to produce the production site in `public/`.
 Dependabot opens weekly update pull requests for the theme and GitHub Actions.
 Review the theme's supported Hugo versions before merging an update; update the
 Hugo version in the workflow and these instructions together when necessary.
+Hugo, actionlint, and Gitleaks binaries are downloaded over HTTPS and checked against
+reviewed SHA-256 digests before extraction. When updating either tool, update
+its pinned version and Linux archive digest together. Never obtain the expected
+digest from the same untrusted download during a build.
 
 ## Publish
 
@@ -62,3 +66,13 @@ In the repository settings, set **Pages → Build and deployment → Source** to
 Changes should go through a pull request, not a direct push to `main`. All Actions
 are pinned to full commit SHAs; checkout does not retain Git credentials, and
 Pages/OIDC write permissions are limited to the deployment job.
+The required build also lints the workflow, checks dependency integrity, and
+scans reachable Git history for secrets with redacted Gitleaks output.
+
+## Security
+
+Use [the security policy](SECURITY.md) for private vulnerability reports.
+The [hardening record](docs/security-hardening.md) documents changes, REST API
+endpoints, before/after states, verification, and rollback guidance. A
+[machine-readable record](docs/security-hardening.json) provides the same change
+inventory for planning a GitHub CLI extension.
