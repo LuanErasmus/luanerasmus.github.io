@@ -27,7 +27,5 @@ Report the location privately without copying the credential into the report.
 
 ## Repository protections
 
-See [the hardening record](docs/security-hardening.md) for verified protections,
-remaining publication steps, and the limits of these controls. Security scans
-and an empty alert list do not guarantee that a repository is free of secrets or
-vulnerabilities.
+Security scans and an empty alert list do not guarantee that a repository is
+free of secrets or vulnerabilities.
