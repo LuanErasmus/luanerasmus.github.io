@@ -1,5 +1,6 @@
 ---
 title: "AboutMe"
+layout: "about"
 description: "A little about Luan Erasmus."
 showDate: false
 showReadingTime: false

@@ -1,0 +1,2 @@
+{{ $icon := resources.Get .Params.logo | resources.Fingerprint "sha256" }}
+<link rel="icon" type="image/svg+xml" sizes="any" href="{{ $icon.RelPermalink }}">

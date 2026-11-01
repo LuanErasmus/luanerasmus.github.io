@@ -9,6 +9,9 @@ cards for the latest blog post and project.
 The theme is pinned in `go.mod`, with dependency checksums in `go.sum`. No npm
 installation or frontend build tool is required.
 
+The shared header logo also supplies the SVG browser-tab icon. AboutMe uses a
+centered reading column with left-aligned text; other page layouts are unchanged.
+
 ## Run locally
 
 Install Hugo Extended 0.167.0 and Go 1.27.3, then run:
