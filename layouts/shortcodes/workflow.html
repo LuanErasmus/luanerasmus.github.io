@@ -1,0 +1,25 @@
+{{- $layout := .Get "layout" | default "steps" -}}
+{{- $caption := .Get "caption" | default "Workflow" -}}
+<figure class="workflow-illustration workflow-illustration--{{ $layout }}">
+  <figcaption class="workflow-illustration__caption">{{ $caption }}</figcaption>
+  {{ if eq $layout "decision" }}<ul class="workflow-steps" role="list">{{ else }}<ol class="workflow-steps" role="list">{{ end }}
+    {{- range (split .Inner "\n") -}}
+      {{- $line := trim . " \r\n\t" -}}
+      {{- if $line -}}
+        {{- $fields := split $line "|" -}}
+        {{- $role := index $fields 3 | default "step" | strings.TrimSpace -}}
+        {{- $tag := index $fields 4 | default "" | strings.TrimSpace -}}
+        <li class="workflow-step workflow-step--{{ $role }}">
+          <span class="workflow-step__icon" aria-hidden="true">{{ index $fields 0 | strings.TrimSpace }}</span>
+          <div class="workflow-step__content">
+            {{- with $tag }}
+              <span class="workflow-step__tag">{{ . }}</span>
+            {{- end }}
+            <strong>{{ index $fields 1 | strings.TrimSpace }}</strong>
+            <span>{{ index $fields 2 | strings.TrimSpace }}</span>
+          </div>
+        </li>
+      {{- end -}}
+    {{- end -}}
+  {{ if eq $layout "decision" }}</ul>{{ else }}</ol>{{ end }}
+</figure>
