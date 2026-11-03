@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="644" viewBox="0 0 640 644" role="img" aria-labelledby="title description">
+  <title id="title">Three responsibilities, one repository</title>
+  <desc id="description">Invoice-orbit has three independent ownership questions: permissions control access, the application team maintains the service, and CODEOWNERS assigns reviewers. The connecting line groups these responsibilities; it is not a sequence of steps.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#172235"/>
+      <stop offset="1" stop-color="#101720"/>
+    </linearGradient>
+    <linearGradient id="review" x2="1" y2="1">
+      <stop stop-color="#143337"/>
+      <stop offset="1" stop-color="#14242e"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="638" height="642" rx="24" fill="url(#background)" stroke="#334155"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#edf3fb">
+    <text x="32" y="40" fill="#9baec5" font-size="12" font-weight="700" letter-spacing="2">OWNERSHIP, UNPACKED</text>
+    <text x="32" y="78" font-size="26" font-weight="700">One repo. Different responsibilities.</text>
+
+    <rect x="32" y="104" width="576" height="68" rx="14" fill="#1c2a3c" stroke="#3a4b63"/>
+    <g transform="translate(52 124)" fill="none" stroke="#b3c9e6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 2h20v24H1z M6 2v24 M10 8h6 M10 13h6"/>
+    </g>
+    <text x="90" y="145" font-family="monospace" font-size="22" font-weight="700">invoice-orbit</text>
+    <rect x="514" y="123" width="74" height="30" rx="15" fill="#111c2a" stroke="#475971"/>
+    <text x="551" y="143" text-anchor="middle" fill="#c0cee0" font-size="13">Private</text>
+
+    <path d="M48 172v367 M48 251h26 M48 383h26 M48 515h26" fill="none" stroke="#475971" stroke-width="2"/>
+    <g fill="#8ca5c5">
+      <circle cx="48" cy="251" r="4"/>
+      <circle cx="48" cy="383" r="4"/>
+      <circle cx="48" cy="515" r="4"/>
+    </g>
+
+    <rect x="78" y="194" width="530" height="114" rx="16" fill="#192638" stroke="#354860"/>
+    <rect x="96" y="212" width="36" height="36" rx="10" fill="#263c5c"/>
+    <g fill="none" stroke="#a8c9ff" stroke-width="1.8" stroke-linecap="round">
+      <rect x="107" y="228" width="14" height="11" rx="2"/>
+      <path d="M110 228v-4a4 4 0 0 1 8 0v4"/>
+    </g>
+    <text x="146" y="225" font-size="12" font-weight="700" letter-spacing="1.5" fill="#a8c9ff">ACCESS</text>
+    <text x="146" y="251" font-size="21" font-weight="650">Who can contribute?</text>
+    <text x="96" y="284" font-size="17" fill="#c1ccdc">Repository permissions control who can read or write.</text>
+
+    <rect x="78" y="326" width="530" height="114" rx="16" fill="#211f36" stroke="#484161"/>
+    <rect x="96" y="344" width="36" height="36" rx="10" fill="#383052"/>
+    <g fill="none" stroke="#d0bcff" stroke-width="1.8" stroke-linecap="round">
+      <circle cx="114" cy="355" r="4"/>
+      <path d="M106 370v-3a8 8 0 0 1 16 0v3"/>
+    </g>
+    <text x="146" y="357" font-size="12" font-weight="700" letter-spacing="1.5" fill="#d0bcff">ACCOUNTABILITY</text>
+    <text x="146" y="383" font-size="21" font-weight="650">Who maintains the service?</text>
+    <text x="96" y="416" font-size="17" fill="#c1ccdc">The application team, agreed outside CODEOWNERS.</text>
+
+    <rect x="78" y="458" width="530" height="114" rx="16" fill="url(#review)" stroke="#4db6ac"/>
+    <rect x="96" y="476" width="36" height="36" rx="10" fill="#204b4c"/>
+    <path d="m105 494 6 6 12-13" fill="none" stroke="#87e0cb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="489" font-size="12" font-weight="700" letter-spacing="1.5" fill="#87e0cb">REVIEW OWNERSHIP</text>
+    <text x="146" y="515" font-size="21" font-weight="650">Who reviews the change?</text>
+    <text x="96" y="548" font-size="17" fill="#c1ccdc">CODEOWNERS requests the team for the changed files.</text>
+
+    <text x="32" y="612" font-size="15" fill="#a7b6ca">Access to a repo doesn't tell you who looks after it.</text>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="810" viewBox="0 0 640 810" role="img" aria-labelledby="title description">
+  <title id="title">Two ways to find a reviewer</title>
+  <desc id="description">An infrastructure pull request follows one of two paths. Without CODEOWNERS, the author searches for the team and requests review manually. With CODEOWNERS, GitHub matches the platform team and requests review automatically. An optional, separate branch rule can require owner approval; bypass permissions must also be checked.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#172235"/>
+      <stop offset="1" stop-color="#101720"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="m2 1 6 4-6 4" fill="none" stroke="#9eb5d1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="mint-arrow" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="m2 1 6 4-6 4" fill="none" stroke="#87e0cb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="638" height="808" rx="24" fill="url(#background)" stroke="#334155"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#edf3fb">
+    <text x="32" y="40" fill="#9baec5" font-size="12" font-weight="700" letter-spacing="2">FROM CHANGE TO REVIEW</text>
+    <text x="32" y="78" font-size="26" font-weight="700">Same change. Less asking around.</text>
+    <rect x="32" y="104" width="576" height="68" rx="14" fill="#1c2a3c" stroke="#3a4b63"/>
+    <circle cx="58" cy="138" r="5" fill="#a8c9ff"/>
+    <text x="78" y="144" font-size="19" font-weight="600">Ready-for-review PR changes /infra/</text>
+
+    <path d="M320 172v24H170v34" fill="none" stroke="#9eb5d1" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M320 196h150v34" fill="none" stroke="#87e0cb" stroke-width="2" marker-end="url(#mint-arrow)"/>
+    <circle cx="320" cy="196" r="4" fill="#9eb5d1"/>
+
+    <rect x="32" y="240" width="276" height="332" rx="18" fill="#141e2c" stroke="#354860"/>
+    <rect x="332" y="240" width="276" height="332" rx="18" fill="#12292d" stroke="#407b79"/>
+    <text x="52" y="272" font-size="17" font-weight="650" fill="#c0cee0">Without CODEOWNERS</text>
+    <text x="352" y="272" font-size="17" font-weight="650" fill="#87e0cb">With CODEOWNERS</text>
+
+    <rect x="52" y="298" width="236" height="94" rx="12" fill="#1d2b3d" stroke="#3a4b63"/>
+    <text x="68" y="329" font-size="18" font-weight="600">Find the right team</text>
+    <text x="68" y="357" font-size="16" fill="#c1ccdc">Ask in chat or search</text>
+    <text x="68" y="379" font-size="16" fill="#c1ccdc">the repository history.</text>
+    <path d="M170 392v42" fill="none" stroke="#9eb5d1" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="52" y="444" width="236" height="94" rx="12" fill="#1d2b3d" stroke="#3a4b63"/>
+    <text x="68" y="475" font-size="18" font-weight="600">Request a review</text>
+    <text x="68" y="503" font-size="16" fill="#c1ccdc">The author selects</text>
+    <text x="68" y="525" font-size="16" fill="#c1ccdc">the reviewer manually.</text>
+
+    <rect x="352" y="298" width="236" height="94" rx="12" fill="#19383b" stroke="#407b79"/>
+    <text x="368" y="329" font-size="18" font-weight="600">Match the file path</text>
+    <text x="368" y="357" font-size="16" fill="#c1ccdc">GitHub finds platform</text>
+    <text x="368" y="379" font-size="16" fill="#c1ccdc">in CODEOWNERS.</text>
+    <path d="M470 392v42" fill="none" stroke="#87e0cb" stroke-width="2" marker-end="url(#mint-arrow)"/>
+    <rect x="352" y="444" width="236" height="94" rx="12" fill="#19383b" stroke="#4db6ac"/>
+    <text x="368" y="475" font-size="18" font-weight="600">Review requested</text>
+    <text x="368" y="503" font-size="16" fill="#c1ccdc">The platform team</text>
+    <text x="368" y="525" font-size="16" fill="#c1ccdc">is notified automatically.</text>
+
+    <path d="M470 572v60" fill="none" stroke="#d0bcff" stroke-width="2" stroke-dasharray="4 5"/>
+    <text x="452" y="606" text-anchor="end" font-size="13" fill="#d0bcff">If approval must be required</text>
+    <path d="m466 627 4 5 4-5" fill="none" stroke="#d0bcff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="32" y="644" width="576" height="108" rx="16" fill="#211f36" stroke="#63517f"/>
+    <text x="52" y="671" font-size="12" font-weight="700" letter-spacing="1.5" fill="#d0bcff">SEPARATE BRANCH RULE</text>
+    <text x="52" y="700" font-size="20" font-weight="650">Require code-owner approval before merging</text>
+    <text x="52" y="728" font-size="16" fill="#c1ccdc">Use branch protection or a ruleset. Check bypass permissions.</text>
+    <text x="32" y="785" font-size="15" fill="#a7b6ca">A review request on its own doesn't block a merge.</text>
+  </g>
+</svg>
