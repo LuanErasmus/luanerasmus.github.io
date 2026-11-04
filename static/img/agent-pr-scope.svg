@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" role="img" aria-labelledby="title description">
+  <title id="title">One small fix. One surprisingly large delivery.</title>
+  <desc id="description">An agent receives a small email-validation task and delivers six changed files. The reviewer questions why deployment is included.</desc>
+  <rect width="720" height="540" rx="20" fill="#0d1117"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="32" y="48" fill="#9ecbff" font-size="26" font-weight="700">01 / THE DELIVERY</text>
+    <rect x="32" y="78" width="252" height="116" rx="12" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="52" y="115" fill="#f0f6fc" font-size="26" font-weight="600">One small bug</text>
+    <text x="52" y="157" fill="#9ecbff" font-family="monospace" font-size="30">alice@</text>
+    <path d="M300 138H365M353 126 365 138 353 150" fill="none" stroke="#58a6ff" stroke-width="3"/>
+    <g transform="translate(396 90)">
+      <path d="M44 0V20" stroke="#9ecbff" stroke-width="4"/>
+      <circle cx="44" cy="0" r="6" fill="#58a6ff"/>
+      <rect y="20" width="88" height="66" rx="18" fill="#21354b" stroke="#58a6ff" stroke-width="2"/>
+      <circle cx="27" cy="45" r="7" fill="#9ecbff"/>
+      <circle cx="61" cy="45" r="7" fill="#9ecbff"/>
+      <path d="M28 66H60" stroke="#9ecbff" stroke-width="3"/>
+    </g>
+    <text x="504" y="135" fill="#f0f6fc" font-size="26">On it.</text>
+    <path d="M440 188V220" stroke="#58a6ff" stroke-width="3" stroke-dasharray="5 6"/>
+    <g fill="#161b22" stroke="#30363d" stroke-width="2">
+      <rect x="250" y="232" width="410" height="44" rx="8"/>
+      <rect x="240" y="279" width="410" height="44" rx="8"/>
+      <rect x="230" y="326" width="410" height="44" rx="8"/>
+      <rect x="220" y="373" width="410" height="44" rx="8"/>
+      <rect x="210" y="420" width="410" height="44" rx="8"/>
+    </g>
+    <g fill="#c9d1d9" font-family="monospace" font-size="24">
+      <text x="270" y="262">validation.ts</text>
+      <text x="260" y="309">user-service.ts</text>
+      <text x="250" y="356">api-client.ts</text>
+      <text x="240" y="403">email-helper.ts</text>
+      <text x="230" y="450">package.json</text>
+    </g>
+    <rect x="200" y="467" width="410" height="44" rx="8" fill="#30251b" stroke="#d29922" stroke-width="2"/>
+    <text x="220" y="497" fill="#f2cc60" font-family="monospace" font-size="24">deploy.yml</text>
+    <path d="M32 264Q32 250 46 250H185Q199 250 199 264V351Q199 365 185 365H122L105 384V365H46Q32 365 32 351Z" fill="#21354b"/>
+    <g fill="#f0f6fc" font-size="24">
+      <text x="48" y="282">We were</text>
+      <text x="48" y="313">fixing an</text>
+      <text x="48" y="344">email, right?</text>
+    </g>
+    <circle cx="100" cy="427" r="23" fill="#21354b" stroke="#9ecbff" stroke-width="2"/>
+    <path d="M67 484V473Q67 455 100 455T133 473V484" fill="#21354b" stroke="#9ecbff" stroke-width="2"/>
+  </g>
+</svg>

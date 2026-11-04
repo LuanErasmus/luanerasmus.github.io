@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title description">
+  <title id="title">Nice pitch. Now show the receipt.</title>
+  <desc id="description">A confident pull request description is contrasted with evidence: a test for alice@ must fail on the old validator and pass after the fix.</desc>
+  <rect width="720" height="520" rx="20" fill="#0d1117"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="32" y="48" fill="#9ecbff" font-size="26" font-weight="700">02 / THE RECEIPT</text>
+    <rect x="32" y="78" width="656" height="110" rx="12" fill="#21354b" stroke="#58a6ff" stroke-width="2"/>
+    <text x="56" y="120" fill="#9ecbff" font-size="24">PR description</text>
+    <text x="56" y="159" fill="#f0f6fc" font-size="30" font-weight="700">Fixed. Tested. Ready.</text>
+    <path d="M360 192V231M348 219 360 231 372 219" fill="none" stroke="#58a6ff" stroke-width="3"/>
+    <text x="360" y="269" fill="#f0f6fc" font-size="28" text-anchor="middle">Can I see the receipt?</text>
+    <path d="M70 301H650V473L631 485 612 473 593 485 574 473 555 485 536 473 517 485 498 473 479 485 460 473 441 485 422 473 403 485 384 473 365 485 346 473 327 485 308 473 289 485 270 473 251 485 232 473 213 485 194 473 175 485 156 473 137 485 118 473 99 485 70 473Z" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="94" y="342" fill="#c9d1d9" font-size="26" font-family="monospace">rejects("alice@")</text>
+    <path d="M94 362H626" stroke="#30363d" stroke-width="2" stroke-dasharray="6 6"/>
+    <text x="94" y="403" fill="#c9d1d9" font-size="26">Before the fix</text>
+    <text x="626" y="403" fill="#ff7b72" font-size="26" font-weight="700" text-anchor="end">FAIL</text>
+    <text x="94" y="448" fill="#c9d1d9" font-size="26">After the fix</text>
+    <text x="626" y="448" fill="#7ee787" font-size="26" font-weight="700" text-anchor="end">PASS</text>
+  </g>
+</svg>
