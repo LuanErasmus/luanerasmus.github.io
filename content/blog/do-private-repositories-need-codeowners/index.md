@@ -1,6 +1,6 @@
 ---
 title: "Do our private repositories need a CODEOWNERS file?"
-date: 2026-11-03T00:00:00+00:00
+date: 2026-11-04T00:00:00+00:00
 description: "How I'd use CODEOWNERS to help teams find the right reviewers for private repositories, and what still needs agreeing outside the file."
 summary: "A private repository can have plenty of contributors and still leave people asking who owns it. Here's where I'd use CODEOWNERS, and where it won't help."
 draft: false
