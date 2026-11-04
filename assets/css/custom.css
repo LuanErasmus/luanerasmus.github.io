@@ -3,6 +3,28 @@
   height: 2.5rem;
 }
 
+body {
+  padding-inline: clamp(1.5rem, 4vw, 4rem);
+}
+
+#single_header,
+#single_header ~ section,
+#single_header ~ footer {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+  overflow-wrap: anywhere;
+}
+
+#single_header ~ section > .min-w-0 {
+  flex: 1;
+  max-width: 100%;
+}
+
+#single_header ~ section .article-content {
+  max-width: none;
+}
+
 .home-intro {
   display: flex;
   align-items: flex-start;
@@ -43,23 +65,7 @@
   font-weight: 700;
 }
 
-.home-news-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 1.5rem;
-}
-
-.home-news-column {
-  min-width: 0;
-}
-
 .home-news-label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
@@ -81,7 +87,7 @@
   color: rgb(var(--color-primary-300));
 }
 
-.home-news-column .article-link--card {
+.home-news .article-link--card {
   min-width: 0;
   min-height: 0;
 }
@@ -198,8 +204,10 @@
 
 .workflow-step__content {
   display: grid;
+  min-width: 0;
   gap: 0.2rem;
   padding-right: 1rem;
+  overflow-wrap: anywhere;
 }
 
 .workflow-step__content .workflow-step__tag {
@@ -260,13 +268,6 @@
 .dark .workflow-step--hybrid {
   border-color: rgb(var(--color-secondary-700));
   background: rgb(var(--color-secondary-900) / 0.18);
-}
-
-@media (max-width: 767px) {
-  .home-news-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
 }
 
 @media (max-width: 479px) {

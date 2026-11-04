@@ -16,13 +16,13 @@
 
 <section class="home-news" aria-labelledby="whats-new-heading">
   <h2 id="whats-new-heading">What's New</h2>
-  <div class="home-news-grid">
+  <div class="grid gap-4 sm:grid-cols-2">
     {{ range slice
       (dict "section" "blog" "label" "Latest Blog Post" "empty" "No blog posts yet.")
       (dict "section" "projects" "label" "Latest Project" "empty" "No projects yet.") }}
-      <section class="home-news-column" aria-labelledby="latest-{{ .section }}-label">
+      <section class="min-w-0" aria-labelledby="latest-{{ .section }}-label">
         {{ $latest := first 1 ((where site.RegularPages "Section" .section).ByDate.Reverse) }}
-        <div class="home-news-label">
+        <div class="home-news-label flex flex-wrap items-center justify-between gap-2">
           <p id="latest-{{ .section }}-label">{{ .label }}</p>
           {{ range $latest }}
             {{ if not .Content }}<span class="home-news-status">Coming soon</span>{{ end }}

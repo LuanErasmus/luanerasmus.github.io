@@ -10,7 +10,12 @@ The theme is pinned in `go.mod`, with dependency checksums in `go.sum`. No npm
 installation or frontend build tool is required.
 
 The shared header logo also supplies the SVG browser-tab icon. AboutMe uses a
-centered reading column with left-aligned text; other page layouts are unchanged.
+centered reading column with left-aligned text. Articles use a centered reading
+area up to 56rem wide, with fluid page gutters that leave more room on tablets
+and smaller screens. Blog and project listings use the theme's responsive card
+grid, and the homepage reuses its Tailwind grid and flex utilities. Blowfish
+already includes Tailwind, so Bootstrap is not loaded alongside it; custom CSS
+is reserved for site-specific appearance, article sizing, and workflow diagrams.
 
 ## Run locally
 
