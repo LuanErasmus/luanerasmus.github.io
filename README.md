@@ -2,7 +2,7 @@
 
 A simple personal blog built with [Hugo](https://gohugo.io/) and
 [Blowfish](https://github.com/nunocoracao/blowfish) v3.9.0, published with GitHub
-Pages. The GitHub-inspired dark palette keeps the focus on Blogs, Projects,
+Pages. The GitHub-inspired dark palette keeps the focus on Blogs, Projects, Events,
 AboutMe, and Github. The homepage combines a compact profile with **What's New**
 cards for the latest blog post and project.
 
@@ -27,6 +27,19 @@ hugo server
 ```
 
 Open the local address printed by Hugo. Add blog posts under `content/blog/` and projects under `content/projects/` as Markdown files with front matter.
+
+The Events page is linked from the main menu. A Next Event card on the homepage
+links to that page and selects the nearest event dated today or later.
+Add entries to the `events` list in `content/events.md`, with a `title`, a
+`date` in `YYYY-MM-DD` format, and a `role` such as `Speaking`. Entries are shown
+in date order. Event dates are separate from Hugo publication dates, so upcoming
+events remain visible in production builds. Selection uses the build's current
+date; rebuild the site after an event to refresh the homepage card. If there are
+no upcoming events, the homepage displays a short message and the Events link.
+An event can also include a `session` title and `summary` for both cards.
+Optional `overview`, `audience`, `takeaways` (title/description pairs), `demo`,
+and `resources` (title/URL pairs) appear only on the Events page, keeping the
+homepage preview compact.
 
 Projects use thumbnail cards. Keep each project in a page bundle containing
 `index.md` and its GitHub social-preview image as `feature.png`. Set

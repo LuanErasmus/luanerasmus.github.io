@@ -37,3 +37,17 @@
     {{ end }}
   </div>
 </section>
+
+{{ with site.GetPage "/events" }}
+  {{ $upcoming := first 1 (sort (where .Params.events "date" "ge" (now.Format "2006-01-02")) "date" "asc") }}
+  <section class="home-news" aria-labelledby="next-event-heading">
+    <h2 id="next-event-heading">Next Event</h2>
+    {{ $eventsURL := .RelPermalink }}
+    {{ range $upcoming }}
+      {{ partial "event-card.html" (dict "event" . "url" $eventsURL) }}
+    {{ else }}
+      <p class="home-news-empty">No upcoming events announced.</p>
+    {{ end }}
+    <p class="mt-3"><a href="{{ $eventsURL }}" class="hover:underline">View all events &rarr;</a></p>
+  </section>
+{{ end }}

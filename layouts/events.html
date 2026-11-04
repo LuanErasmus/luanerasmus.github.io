@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <article>
+    <header class="mt-5">
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        {{ .Title }}
+      </h1>
+    </header>
+    <section class="mt-8 prose dark:prose-invert">
+      {{ .Content }}
+    </section>
+    <div class="grid gap-4 mt-8">
+      {{ range sort .Params.events "date" "asc" }}
+        {{ partial "event-card.html" (dict "event" . "details" true) }}
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

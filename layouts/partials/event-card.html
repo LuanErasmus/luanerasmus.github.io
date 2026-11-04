@@ -1,0 +1,46 @@
+{{ $date := time.AsTime .event.date }}
+<section class="min-w-0 rounded-lg border border-neutral-300 dark:border-neutral-600 p-4">
+  <p class="text-sm text-neutral-500 dark:text-neutral-400">
+    <time datetime="{{ $date.Format "2006-01-02" }}">{{ time.Format "2 January 2006" $date }}</time>
+  </p>
+  <h2 class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral">
+    {{ with .url }}<a href="{{ . }}" class="hover:underline">{{ end }}
+    {{ .event.title }}
+    {{ if .url }}</a>{{ end }}
+  </h2>
+  <p class="mt-3">{{ .event.role }}</p>
+  {{ with .event.session }}
+    <h3 class="mt-3 text-xl font-bold text-neutral-900 dark:text-neutral">{{ . }}</h3>
+  {{ end }}
+  {{ with .event.summary }}
+    <p class="mt-3">{{ . }}</p>
+  {{ end }}
+  {{ if .details }}
+    <div class="prose dark:prose-invert max-w-full mt-8">
+      {{ with .event.overview }}<p>{{ . }}</p>{{ end }}
+      {{ with .event.audience }}
+        <p><strong>Who it's for:</strong> {{ . }}</p>
+      {{ end }}
+      {{ with .event.takeaways }}
+        <h3>What we'll cover</h3>
+        <ul>
+          {{ range . }}
+            <li><strong>{{ .title }}</strong> {{ .description }}</li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ with .event.demo }}
+        <h3>The demo: a Bicep change and a customer's bill</h3>
+        <p>{{ . }}</p>
+      {{ end }}
+      {{ with .event.resources }}
+        <h3>Session resources</h3>
+        <ul>
+          {{ range . }}
+            <li><a href="{{ .url }}">{{ .title }}</a></li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </div>
+  {{ end }}
+</section>
