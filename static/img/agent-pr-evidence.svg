@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520" role="img" aria-labelledby="title description">
   <title id="title">Nice pitch. Now show the receipt.</title>
   <desc id="description">A confident pull request description is contrasted with evidence: a test for alice@ must fail on the old validator and pass after the fix.</desc>
   <rect width="720" height="520" rx="20" fill="#0d1117"/>

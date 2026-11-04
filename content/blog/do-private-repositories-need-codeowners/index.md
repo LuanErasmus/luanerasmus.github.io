@@ -6,43 +6,17 @@ summary: "A private repository can have plenty of contributors and still leave p
 draft: false
 ---
 
-Suppose someone opens a pull request to change the infrastructure behind an application. They know several teams work in the repository, but they don't know which one to ask for a review. So they post a link in a team chat and wait.
+A pull request changes `/infra/`. The author posts it in chat: "Who should review this?"
 
-Making the repository private hasn't helped with that question. It limits who can see the code, but everyone with access can still be unsure who looks after it.
+That's a problem `CODEOWNERS` can help with. It won't tell us who maintains the service or answers an incident, but it can save contributors from hunting for a reviewer.
 
-Would a `CODEOWNERS` file help? Yes, with finding reviewers. I'd be more careful about calling it a solution to repository ownership, though. There are responsibilities it simply doesn't cover.
+The repository being private doesn't change that need. It does mean checking whether your GitHub plan supports the feature: private organization repositories need **GitHub Team or GitHub Enterprise**. See GitHub's [current availability](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
 
-## Who owns the repository?
+## Start with the review we want
 
-Let's use a private repository called `invoice-orbit`, a fictional company's billing service, as an example. The application team maintains the service, and the platform team helps with its infrastructure.
+Take `invoice-orbit`, a fictional billing service. The application team maintains it, while the platform team reviews infrastructure changes. Both teams have agreed to those responsibilities.
 
-When we say a team "owns" this repository, we could mean a few things:
-
-![Three kinds of ownership for invoice-orbit: permissions control access, the application team maintains the service, and CODEOWNERS assigns review responsibility.](ownership.svg)
-
-The application team might be responsible for dependency updates, production problems, and deciding when the service needs work. That needs agreeing with the team and recording somewhere people can find it, whether that's a README or a service catalog.
-
-Reviewing a change is a narrower responsibility. The platform team may be the right people to review `/infra/` without taking over maintenance of the whole application.
-
-That's the part I'd put in `CODEOWNERS`. Adding the platform team there shouldn't come as a surprise to them, and it shouldn't be the only conversation about what they're expected to do.
-
-## What does CODEOWNERS actually do?
-
-A `CODEOWNERS` file lists file patterns alongside GitHub users or teams. When a non-draft pull request changes matching files, GitHub requests their review. For a draft pull request, it waits until the author marks it ready for review.
-
-In `invoice-orbit`, we can use that to send infrastructure changes to the platform team. The author doesn't need to know the team beforehand.
-
-![Without CODEOWNERS, the author finds a reviewer manually. With it, GitHub requests the platform team for infrastructure changes. Requiring approval needs a separate branch rule.](review-routing.svg)
-
-There's a catch here: the review request alone doesn't prevent a merge.
-
-If we want owner approval to be required, we also need a branch protection rule or ruleset configured for the target branch. Check who can bypass those rules, too, especially if the intention is that nobody should merge without review.
-
-Before setting this up for private organization repositories, check the GitHub plan. Code owners for those repositories require **GitHub Team or GitHub Enterprise**. GitHub's [code owners documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) lists the current availability.
-
-## A small example
-
-Here's what `.github/CODEOWNERS` could look like for `invoice-orbit`. The organization and team names are placeholders:
+Here's `.github/CODEOWNERS`. The organization and team names are placeholders:
 
 ```text
 # Default review ownership for the repository.
@@ -55,7 +29,20 @@ Here's what `.github/CODEOWNERS` could look like for `invoice-orbit`. The organi
 /.github/CODEOWNERS      @example-org/application
 ```
 
-The teams need to exist and have write access to the repository. They must also be visible teams; it isn't enough for individual members to have access through some other route.
+Each line pairs a file pattern with users or teams. When a non-draft pull request changes matching files, GitHub automatically requests their review. Draft PRs trigger those requests when marked ready for review.
+
+The teams must be visible and have explicit write access to the repository. Individual members having access through another route isn't enough.
+
+GitHub reads this file from the PR's **base branch**. For requests on PRs targeting `main`, merge the file into `main` first.
+
+{{< workflow caption="A ready-for-review PR changes /infra/" layout="decision" >}}
+💬|Ask in chat|Without rules, the author finds the team and requests review.|step
+📬|Route by path|With CODEOWNERS, GitHub requests platform for /infra/.|step
+{{< /workflow >}}
+
+**A review request doesn't block a merge.** To require code-owner approval, enable that requirement in branch protection or a ruleset for the target branch. Check bypass permissions as well.
+
+## Two details worth checking
 
 One detail is easy to miss: **the last matching pattern wins.** For a change only inside `/infra/`, GitHub requests the platform team, not the application team as well. The default rule doesn't get added to the more specific one.
 
@@ -67,45 +54,43 @@ If both teams should be listed for infrastructure, put them on the same line:
 
 Even then, the standard code-owner review requirement doesn't require approval from both teams. Either listed owner can satisfy it for those files. If your policy says both teams must sign off, this line alone won't enforce that.
 
-GitHub also reads the file from the pull request's **base branch**, meaning the branch the changes will merge into. To use these rules for pull requests targeting `main`, the file needs to be on `main`.
+That's worth testing before telling the teams their approval policy is enforced.
+
+## Review ownership isn't service ownership
+
+For `invoice-orbit`, there are three different questions:
+
+| Question | Where the answer belongs |
+| --- | --- |
+| Who can read or change the code? | Repository permissions |
+| Who maintains the service and handles incidents? | A team agreement recorded in the README or service catalog |
+| Who gets asked to review these files? | `CODEOWNERS` |
+
+The platform team can review `/infra/` without taking responsibility for dependency updates or production incidents across the application. Adding a team to the file shouldn't be the first time it hears about the work.
 
 ## Does every repository need one?
 
 If several teams contribute to a repository, or people regularly ask who should review a change, I'd add one. It's also useful when a particular area needs specialist knowledge, such as deployment configuration or authentication code.
 
-A new contributor benefits from this even if everyone else already knows who to ask. They can open a pull request without having to find the right person through a series of chat messages.
+A new contributor benefits even if everyone else already knows who to ask. They can open a PR without first finding someone who knows the team structure.
 
-![Decision tree: agree which team maintains the repository first, then check whether changes reach the right reviewers. Add targeted CODEOWNERS rules where needed; otherwise a default owner may be enough.](decision.svg)
+But **no, I wouldn't add it to every private repository by default**. If one small team already routes reviews reliably and doesn't need enforced owner approval, the file is optional. A default owner can still be convenient; directory-by-directory rules probably aren't.
 
-A small repository maintained by one team may not need much more than a default owner. If reviews already reach the right people, I wouldn't split ownership across every directory just to make the file look thorough. Someone will have to keep those rules up to date.
+Keep the specialist rules narrow. Naming platform on every file pulls that team into unrelated changes and can create a review queue without improving the review.
 
-## What won't it solve?
-
-It won't settle who responds to incidents or who has time to update an old dependency. Listing a team in a file doesn't give it the capacity to do the work.
-
-It doesn't grant access either. Repository permissions still control who can read or change the code.
-
-And the file can go stale. A team gets renamed, people move, or a service changes hands. Review requests may stop reaching anyone useful unless the ownership rules change as well.
-
-There's also a cost to requesting too many reviews. If the platform team is named on every file in every repository, it gets pulled into changes it may not need to assess. That can slow reviews down rather than help.
-
-I'd generally use a team rather than an individual's name when the responsibility belongs to that team. That makes staff changes easier to handle, provided someone keeps the team membership current.
+Use teams rather than individuals when the responsibility belongs to a team. Keep memberships and patterns current when teams rename or services move; stale rules won't reliably reach the people you need.
 
 ## Rolling it out without creating a review backlog
 
 I'd try this with a few actively maintained repositories before generating files across the organization.
 
-For each one, agree who maintains it and which changes need another team's review. Start with those rules. Check team access and any errors GitHub highlights in `CODEOWNERS`, then test a few representative paths with pull requests after the file reaches the base branch.
+1. Agree who maintains the service and which changes need specialist review.
+2. Add the smallest useful set of patterns, including ownership of `CODEOWNERS` itself.
+3. Check team access and any errors GitHub highlights in the file. Once it's on the base branch, open representative PRs and confirm the review requests.
+4. If approval must be mandatory, configure the branch rule and verify bypass permissions.
+5. After teams have used it, check whether requests reach the right people and whether reviews are waiting longer. Revisit the rules when responsibilities change.
 
-Where owner approval is required, configure the branch rule and check bypass permissions. Include the `CODEOWNERS` file itself in the ownership rules, so changes to who gets requested are reviewed too.
-
-Then give the teams time to use it. Are requests going to the right people? Are pull requests sitting around longer? Those answers are more useful than knowing every repository now has the file.
-
-## My recommendation
-
-For an organization with several teams sharing private repositories, I'd usually add `CODEOWNERS`. It saves contributors from guessing who should review their changes, and it gives us something concrete to use when owner approval needs to be required.
-
-But I'd still want a clear answer to "who maintains this repository?" outside that file. For `invoice-orbit`, the application team remains responsible for the service even when the platform team reviews its infrastructure.
+Back at the opening PR, the author marks the `/infra/` change ready for review and platform gets the request. Nobody has to ask in chat. Application still maintains the billing service; we've made one part of contributing to it less dependent on knowing who to call.
 
 ## References
 
