@@ -3,6 +3,11 @@
   height: 2.5rem;
 }
 
+.thumbnail_card:has(img[src*="/projects/agentic-blueprints/"]),
+.thumbnail_card_related:has(img[src*="/projects/agentic-blueprints/"]) {
+  aspect-ratio: 2;
+}
+
 body {
   padding-inline: clamp(1.5rem, 4vw, 4rem);
 }

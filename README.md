@@ -50,6 +50,8 @@ changes.
 
 The `agentic-blueprints` project also uses a local copy of its repository's
 social-preview image, stored as `feature.jpg` in its page bundle.
+Its card thumbnail uses the banner's 2:1 aspect ratio so the artwork and title
+remain visible, without changing the proportions of other project thumbnails.
 
 Homepage cards automatically select the newest published entry in each section
 by its front-matter date. Drafts and future-dated entries are excluded from
