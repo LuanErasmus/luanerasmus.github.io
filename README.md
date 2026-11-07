@@ -42,11 +42,14 @@ and `resources` (title/URL pairs) appear only on the Events page, keeping the
 homepage preview compact.
 
 Projects use thumbnail cards. Keep each project in a page bundle containing
-`index.md` and its GitHub social-preview image as `feature.png`. Set
-`featureimage: "feature.png"` in the front matter. The `gh-action-inspector` image
+`index.md` and its GitHub social-preview image as `feature.png` or `feature.jpg`. Set
+`featureimage` to that filename in the front matter. The `gh-action-inspector` image
 is a local copy of the repository's configured GitHub social preview, so builds
 and visitors do not depend on GitHub's image server. Replace it when that preview
 changes.
+
+The `agentic-blueprints` project also uses a local copy of its repository's
+social-preview image, stored as `feature.jpg` in its page bundle.
 
 Homepage cards automatically select the newest published entry in each section
 by its front-matter date. Drafts and future-dated entries are excluded from
